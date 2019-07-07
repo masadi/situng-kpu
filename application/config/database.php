@@ -7,9 +7,9 @@ $query_builder = TRUE;
 $db['mysql'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'pilpres',
+	'username' => 'your_database_username',
+	'password' => 'your_database_password',
+	'database' => 'your_database_name',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -26,10 +26,10 @@ $db['mysql'] = array(
 	'save_queries' => TRUE
 );
 $db['postgresql'] = array(
-	'dsn'	=> 'pgsql:host=localhost;port=5433;dbname=pilpres',
-	'hostname' => 'localhost:5433',
-	'username' => 'postgres',
-	'password' => 'bismillah',
+	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=your_database_name',
+	'hostname' => 'localhost:5432',
+	'username' => 'your_database_username',
+	'password' => 'your_database_password',
 	'database' => '',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
