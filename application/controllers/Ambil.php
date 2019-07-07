@@ -34,13 +34,13 @@ class Ambil extends CI_Controller {
 					$desa = $this->desa->find_all_by_id_kecamatan($kec->id);
 					foreach($desa as $des){
 						$url_tps = 'https://pemilu2019.kpu.go.id/static/json/hhcw/ppwp/'.$des->id_provinsi.'/'.$des->id_kabupaten.'/'.$des->id_kecamatan.'/'.$des->id.'.json';
-						$json_data_tps = file_get_contents($url_tps);
+						$json_data_tps = getSSLPage($url_tps);
 						$response_tps = json_decode($json_data_tps);
 						$i=1;
 						foreach($response_tps->table as $id_tps => $data_tps){
 							$find_tps = $this->tps->get($id_tps);
 							$url = 'https://pemilu2019.kpu.go.id/static/json/hhcw/ppwp/'.$des->id_provinsi.'/'.$des->id_kabupaten.'/'.$des->id_kecamatan.'/'.$des->id.'/'.$id_tps.'.json';
-							$json_data = @file_get_contents($url);
+							$json_data = getSSLPage($url);
 							$response = json_decode($json_data);
 							$suara_tidak_sah = 0;
 							$suara_sah = 0;
@@ -119,16 +119,9 @@ class Ambil extends CI_Controller {
 							
 							$i++;
 						}
-						//die();
 					}
 				}
 			}
 		}
-	}
-	private function proses($id){
-		$url = 'https://pantau.kawalpilpres2019.id/api/tps-'.$id.'.json';
-		$json_data = file_get_contents($url);
-		$response = json_decode($json_data);
-		return $response;
 	}
 }
